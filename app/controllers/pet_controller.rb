@@ -62,7 +62,7 @@ class PetController < ApplicationController
 
   # used to get all non adopted pets from the adoption center
   def adopt_list
-    pets = Pet.where(user_id: null)
+    pets = Pet.where(user_id: nil)
     pets = pets.paginate(page: params[:page], per_page: params[:per_page])
     render json: pets.as_json, status: :ok
   end
@@ -81,6 +81,7 @@ class PetController < ApplicationController
       :name,
       :breed,
       :health,
+      :hunger,
       :happiness,
       :user_id
     )

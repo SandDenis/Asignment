@@ -4,7 +4,7 @@ class ToyController < ApplicationController
     unless toy.save!
       render json: { error: toy.errors.full_messages[0] }, status: 400
     end
-    json_response toy
+    render json: toy
   end
 
 

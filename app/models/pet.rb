@@ -1,6 +1,6 @@
 class Pet < ApplicationRecord
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :toys
 
   validates :name,
@@ -29,7 +29,7 @@ class Pet < ApplicationRecord
             numericality: { less_than_or_equal_to: 100, greater_than_or_equal_to: 0, only_integer: true }
 
   def play (value)
-    unless self.hunger > 80
+    if self.hunger < 80
       self.update(happiness: self.happiness + value, hunger: self.hunger + 20)
       return true
     end
